@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Income Tax</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Income Tax Calculator</h1>
+		<label>Enter your income: </label>
+		<input type="text" id="income" onkeyup="incomeTax()">
+		<p id="result"></p>
+		<br><br>
+		<a href="index.html">Back to Home Page</a>
+		<br>
+	</div>
+	<script>
+		function incomeTax () {
+			var income = document.getElementById('income').value * 1;
+			var tax = 0.0;
+
+			if (income < 250000) {
+				tax = 0.0;
+			} else if (income < 400000) {
+				tax = (income - 250000) * 0.20;
+			} else if (income < 800000) {
+				tax = (income - 400000) * 0.25 + 30000;
+			} else if (income < 2000000) {
+				tax = (income - 800000) * 0.30 + 130000; 
+			} else if (income < 8000000) {
+				tax = (income - 2000000) * 0.32 + 490000;
+			} else {
+				tax = (income - 8000000) * 0.35 + 2410000;
+			}
+
+			document.getElementById('result').innerHTML = 'Your income tax is: ' + tax;
+		}
+	</script>
+</body>

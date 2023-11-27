@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* This is the scrollbar track */
+::-webkit-scrollbar {
+    background: rgb(55, 55, 92); /* Change this color */
+    width: 10px;
+}
+  
+/* This is the scrollbar handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(17, 17, 98);
+    border-radius: 15px;
+}
+  
+/* This is the scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(10, 10, 61);
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+
+body {
+    background-image: url("background.jpg");
+    background-color: rgb(255, 219, 179);
+    color: #000000;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.42857143;
+    background-size: cover;
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+
+header {
+    display: flex;
+    justify-content: flex-start;
+    background: linear-gradient(to right, rgb(69, 10, 10), #000000);
+    /* background-color: rgb(69, 10, 10); */
+    color: #fff;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    overflow-x: hidden;
+    
+}
+
+.name {
+    margin-left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+.hamburger-container {
+    transition: transform .5s;
+    position: relative;
+    float: left;
+    top: 10px;  
+    left: 10px;
+    z-index: 1;
+}
+
+.hamburger-container.hide {
+    transform: translateX(-200%);
+}
+
+.hamburger-icon {
+    margin-left: 14px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #121212;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    font-size: 40px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: rgb(6, 6, 61);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    white-space: nowrap;
+}
+
+.sidenav h2 {
+    padding: 8px 8px 8px 32px;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: left;
+}
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #a4a4a4;
+    display: block;
+    transition: 0.3s;
+}
+  
+.sidenav a:hover {
+    color: rgb(255, 193, 77);
+    font-weight: 700;
+}
+
+.content {
+    transition: margin-left .5s;
+}
+  
+.content.move {
+    margin-left: 23%; /* Replace 300px with the width of your side navigation */
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+.container {
+    display: flex;
+}
+  
+.div1, .div2 {
+    width: 50%; /* Adjust as needed */
+}
+
+.text-content {
+    background-color: rgb(255, 255, 255, 0.5);
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 6%;
+}
+
+#text-title {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 4%;
+    letter-spacing: 0.05em;
+}
+
+.text-content h1 {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 10px;
+    /* margin-left: 8%; */
+    letter-spacing: 0.05em;
+}
+
+.text-content p {
+    text-indent: 3em;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 8%;
+    margin-right: 8%;
+    text-align: justify;
+    letter-spacing: 0.05em;
+}
+
+.grid-container {
+    background-color: rgba(0, 0, 0, 0.7); /* black with 50% opacity */
+    /* opacity: 50%; */
+    float: right;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5%;
+    margin-top: 10%;
+    margin-right: 6%;
+    width: 90%;
+    border-radius: 20px;
+}
+
+.grid-title {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+    color:#ffffff;
+}
+.main-grid {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 23px;
+    width: 100%;
+    margin: 0 auto;
+}
+  
+.main-grid a {
+    display: flex;
+    border-radius: 14px;
+    justify-content: center; /* center contents horizontally */
+    align-items: center; /* contents */
+    height: 100px;
+    background-color: #ffffff;
+    text-decoration: none;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+}
+
+.main-grid a:hover {
+    background-color: rgb(255, 193, 77);
+    color: #222222;
+}
+
+

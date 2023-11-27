@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Payroll</title>
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+    <div id="app" class="container3">
+        <h1>Simple Payroll</h1>
+        <br>
+        <h2>Add Employee</h2>
+        <form id="employeeForm">
+          <input type="text" id="name" placeholder="Employee Name" required>
+          <input type="number" id="daysWorked" placeholder="Days Worked" required>
+          <input type="number" id="dailyRate" placeholder="Daily Rate" required>
+          <input type="number" id="deduction" placeholder="Deduction Amount" required>
+          <button type="submit">Add Employee</button>
+        </form>
+        <br><br>
+        <h2>Payroll List</h2>
+        <table id="employeeTable">
+          <tr>
+            <th>No.</th>
+            <th>Employee Name</th>
+            <th>Days Worked</th>
+            <th>Daily Rate</th>
+            <th>Gross Pay</th>
+            <th>Deduction Amount</th>
+            <th>Net Pay</th>
+            <th>Action</th>
+          </tr>
+        </table>
+        <br><br>
+        <h2>Delete Employee</h2>
+        <form id="deleteForm">
+          <input type="number" id="lineNumber" placeholder="Line Number" required>
+          <button type="submit">Delete Employee</button>
+        </form>
+        <br><br>
+        <a href="index.html">Back to Home Page</a>
+        <br>
+    </div>
+
+    <script>
+        document.getElementById('employeeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+          
+            var name = document.getElementById('name').value;
+            var daysWorked = document.getElementById('daysWorked').value;
+            var dailyRate = document.getElementById('dailyRate').value;
+            var deduction = document.getElementById('deduction').value;
+          
+            var grossPay = daysWorked * dailyRate;
+            var netPay = grossPay - deduction;
+          
+            var table = document.getElementById('employeeTable');
+            var row = table.insertRow(-1);
+          
+            row.insertCell(0).innerText = table.rows.length - 1;
+            row.insertCell(1).innerText = name;
+            row.insertCell(2).innerText = daysWorked;
+            row.insertCell(3).innerText = dailyRate;
+            row.insertCell(4).innerText = grossPay;
+            row.insertCell(5).innerText = deduction;
+            row.insertCell(6).innerText = netPay;
+            row.insertCell(7).innerText = 'Delete';
+            row.cells[7].addEventListener('click', function() {
+                table.deleteRow(row.rowIndex);
+                updateLineNumbers();
+            });
+          
+            function updateLineNumbers() {
+              for (var i = 1; i < table.rows.length; i++) {
+                table.rows[i].cells[0].innerText = i;
+              }
+            }
+          });
+          
+          document.getElementById('deleteForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+          
+            var lineNumber = document.getElementById('lineNumber').value;
+          
+            var table = document.getElementById('employeeTable');
+            if (lineNumber > 0 && lineNumber < table.rows.length) {
+              table.deleteRow(lineNumber);
+            }
+          });
+    </script>
+</body>
+</html>

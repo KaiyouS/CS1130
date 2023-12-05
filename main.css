@@ -160,8 +160,8 @@ header {
 }
 
 .text-content p {
-    text-indent: 3em;
-    font-size: 20px;
+    /* text-indent: 3em; */
+    font-size: 18px;
     font-weight: 400;
     text-align: left;
     margin-top: 10px;
@@ -169,6 +169,15 @@ header {
     margin-right: 8%;
     text-align: justify;
     letter-spacing: 0.05em;
+    line-height: 2;
+}
+
+.text-content hr {
+    border: 1px solid #000000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 8%;
+    margin-right: 8%;
 }
 
 .grid-container {

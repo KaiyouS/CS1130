@@ -129,16 +129,13 @@ header {
 .container {
     display: flex;
 }
-  
-.div1, .div2 {
-    width: 50%; /* Adjust as needed */
+
+.div1 {
+    width: 60%;
 }
 
-.text-content {
-    background-color: rgb(255, 255, 255, 0.5);
-    margin-left: 4%;
-    margin-right: 4%;
-    margin-top: 6%;
+.div2 {
+    width: 40%;
 }
 
 #text-title {
@@ -150,12 +147,22 @@ header {
     letter-spacing: 0.05em;
 }
 
+.text-content, .grid-container {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.text-content {
+    background-color: rgb(255, 255, 255, 0.5);
+    margin-left: 7%;
+    margin-right: 4%;
+}
+
 .text-content h1 {
     font-size: 30px;
     font-weight: 700;
     text-align: center;
     margin-top: 10px;
-    /* margin-left: 8%; */
     letter-spacing: 0.05em;
 }
 
@@ -187,7 +194,6 @@ header {
     justify-content: center;
     align-items: center;
     padding: 2.5%;
-    margin-top: 10%;
     margin-right: 6%;
     width: 90%;
     border-radius: 20px;
@@ -216,17 +222,51 @@ header {
     justify-content: center; /* center contents horizontally */
     align-items: center; /* contents */
     height: 100px;
-    background-color: #ffffff;
-    text-decoration: none;
     font-family: Helvetica, sans-serif;
     font-size: 20px;
     font-weight: 700;
-    color: black;
+    text-decoration: none;
+    background-size: cover;
+    background-color: #0000003f;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, .8); /* Add a black outline */
+    transition: transform 0.2s ease;
 }
 
 .main-grid a:hover {
-    background-color: rgb(255, 193, 77);
-    color: #222222;
+    transform: scale(1.2);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 1);
 }
 
+#conv {
+    background-image: url('https://media.wired.com/photos/59cbc98966372b12a75be507/master/w_2560%2Cc_limit/mercury-thermometerTA-492194120.jpg');
+}
+
+#inco {
+    background-image: url('https://www.theforage.com/blog/wp-content/uploads/2023/03/operating-income-1.jpg');
+}
+
+#oper {
+    background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*txktmH7XZ8OTRCZYsNGW6A.jpeg');
+}
+
+#payr {
+    background-image: url('https://tax.thomsonreuters.com/blog/wp-content/uploads/sites/17/2022/10/AdobeStock_314749508.jpeg');
+}
+
+#grad {
+    background-image: url('https://www.jamesgmartin.center/wp-content/uploads/2020/07/AdobeStock_328366715-1200x800.jpeg');
+}
+
+#add {
+    background-image: url('https://epe.brightspotcdn.com/58/da/1298d864413a9978833bc44e1d3f/05112023lead-art-32srmath-how-addition-fact-fluency-develops-stephen-vs.jpg');
+}
+
+#cart {
+    background-image: url('https://imageio.forbes.com/specials-images/imageserve/6349c12e2476e78de0de06ab/Online-Shopping/960x0.png?format=png&width=960');
+}
+
+#star {
+    background-image: url('https://imageio.forbes.com/specials-images/imageserve/656bb721a5f8602a7b456f04/Star-shower/960x0.jpg?format=jpg&width=960');
+}
 

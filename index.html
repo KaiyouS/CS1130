@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <title>海容 | Home</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>海容 Home Page</title>
     <link rel="stylesheet" href="main.css">
+	<link rel="icon" href="site-logo.ico">
 </head>
 <body>
     <div class="content">
-        <header>            
-            <div class="name" onclick="location.href='surprise.html'"">海容　•　ＫＡＩＹＯＵ　•　海容　•　ＫＡＩＹＯＵ　•　海容　•　ＫＡＩＹＯＵ　•　海容　•　ＫＡＩＹＯＵ　•　海容　•　ＫＡＩＹＯＵ　•　海容　•　ＫＡＩＹＯＵ　•　海容　•　ＫＡＩＹＯＵ　</div>
+        <header>
+            <div class="header-content">
+                <h1>
+                    <a href="index.html" class="logo-container">
+                        <img src="site-logo.png" alt="Site Logo" id="site-logo">
+                        <p>K A I Y O U</p>
+                    </a>
+                </h1>
+                  
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Assignments (NOT DONE YET as of 12/07/2023)</a>
+                            <div class="dropdown-content">
+                                <a href="conversion.html">Assignment #1: Conversion</a>
+                                <a href="income-tax.html">Assignment #2: Income Tax Calculator</a>
+                                <a href="operations.html">Assignment #3: Operations</a>
+                                <a href="simple-payroll.html">Assignment #4: Simple Payroll</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Other Programs</a>
+                            <div class="dropdown-content">
+                                <a href="grade-computation.html">Compute Grade</a>
+                                <a href="add-number.html">Add Two Numbers</a>
+                                <a href="shopping-cart.html">Shopping Cart</a>
+                                <a href="stars.html">All The Stars</a>
+                            </div>
+                        </li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
 
         <div id="hamburger-container" class="hamburger-container" onclick="openNav()">

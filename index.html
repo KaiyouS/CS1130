@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- <div id="header"></div>     -->
-    <!---------- HEADER ----------><header><div class="header-content"><h1><a href="index.html" class="logo-container"><img src="./src/images/logo/site-logo.png" alt="Site Logo" id="site-logo"><p id="logo-text">K A I Y O U</p></a></h1><nav><ul><li><a href="index.html">Home</a></li><li class="dropdown"><a href="#">Assignments</a><div class="dropdown-content"><a href="conversion.html">Assignment #1: Conversion</a><a href="income-tax.html">Assignment #2: Income Tax</a><a href="loops.html">Assignment #3: Loops</a><a href="simple-payroll.html">Assignment #4: Simple Payroll</a></div></li><li class="dropdown"><a href="#">Other Programs</a><div class="dropdown-content"><a href="grade-computation.html">Compute Grade</a><a href="add-number.html">Add Two Numbers</a><a href="shopping-cart.html">Shopping Cart</a><a href="stars.html">All The Stars</a></div></li><li><a href="about.html">About</a></li></ul></nav></div></header>
+    <!---------- HEADER ----------><header id="home"><div class="header-content"><h1><a href="index.html" class="logo-container"><img src="./src/images/logo/site-logo.png" alt="Site Logo" id="site-logo"><p id="logo-text">K A I Y O U</p></a></h1><nav><ul><li><a href="#home">Home</a></li><li class="dropdown"><a href="#assignments">Assignments</a><div class="dropdown-content"><a href="conversion.html">Assignment #1: Conversion</a><a href="income-tax.html">Assignment #2: Income Tax</a><a href="loops.html">Assignment #3: Loops</a><a href="simple-payroll.html">Assignment #4: Simple Payroll</a></div></li><li class="dropdown"><a href="#otherPrograms">Other Programs</a><div class="dropdown-content"><a href="grade-computation.html">Compute Grade</a><a href="add-number.html">Add Two Numbers</a><a href="shopping-cart.html">Shopping Cart</a><a href="stars.html">All The Stars</a></div></li><li><a href="about.html">About</a></li></ul></nav></div></header>
     <div id="hamburger-container" class="hamburger-container" onclick="openNav()">
         <span class="hamburger-icon">&#9776;</span>
     </div>
@@ -39,7 +39,8 @@
 
         <!---------- ASSIGNMENTS ---------->
         <br><br><br><br><br><br><br>
-        <h1 class="center">ASSIGMENTS</h1>
+        <h1 class="center" id="assignments">ASSIGMENTS</h1>
+        <div class="scroll-padding"></div>
         <div class="content-wrapper">
             <div class="content">
                 <div class="content-image">
@@ -97,7 +98,8 @@
 
         <!---------- OTHER PROGRAMS ---------->
         <br><br><br><br><br><br><br>
-        <h1 class="center">OTHER PROGRAMS</h1>
+        <h1 class="center" id="otherPrograms">OTHER PROGRAMS</h1>
+        <div class="scroll-padding"></div>
         <div class="content-wrapper">
             <div class="content">
                 <div class="content-image">
@@ -199,6 +201,18 @@
             } else {
               footer.classList.remove('visible');
             }
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+        
+                let target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({
+                    top: target.offsetTop - 90,
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>

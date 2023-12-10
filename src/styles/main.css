@@ -231,7 +231,7 @@ li > a {
     top: 0;
     right: 0;
     /* background-color: rgb(5, 5, 43); */
-    background-color: rgb(219, 123, 20);
+    background-color: rgb(241, 142, 35);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -260,11 +260,11 @@ li > a {
 .sidenav a {
     text-decoration: none;
     color: #ffffff;
-    transition: 0.5s;
+    transition: 0.2s;
 }
   
 .sidenav a:hover {
-    color: rgb(255, 193, 77);
+    color: rgb(157, 73, 4);
     font-weight: 500;
 }
 
@@ -273,12 +273,12 @@ li > a {
     text-decoration: none;
     color: #ffffff;
     display: block;
-    transition: 0.3s;
+    transition: 0.2s;
     text-align: left;
 }
 
 #closeButton:hover {
-    color: rgb(255, 193, 77);
+    color: rgb(206, 93, 0);
     font-weight: 700;
 }
 

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>海容 | Image Carousel</title>
+        <link rel="icon" href="site-logo.ico">
+        
+        <style>
+            @font-face {
+                font-family: 'Helvetica Now';
+                src: url(../fonts/helvetica-now-var.ttf);
+                font-weight: 100 1200;
+            }
+            * {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+            }
+            
+            body {
+                background-color: #000000;
+                margin: 0;
+                font-family: 'Helvetica Now', sans-serif;
+                font-weight: 300;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin: 1 0;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2.9rem;
+            }
+
+            p {
+                color: #ffffff;
+                font-size: 1.2rem;
+            }
+
+            hr {
+                width: 100%;
+                border: none;
+                border-top: 1px solid #ffffff;
+            }
+            
+            .slider {
+                position: relative;
+                width: 100%;
+                height: 684px;
+                overflow: hidden;
+                background-color: #000000;
+                color: #ffffff;
+            }
+            
+            .slides-container {
+                display: flex;
+                transition: transform 0.5s ease;
+            }
+            
+            .slide {
+                flex: 0 0 100%;
+                display: flex;
+            }
+
+            .container-left {
+                width: 55%;
+            }
+
+            .container-right {
+                width: 45%;
+            }
+            
+            .slide-description {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                padding: 100px;
+                line-height: 1.5;
+                text-align: justify;
+                text-justify: inter-word;
+                line-height: 2;
+                letter-spacing: normal;
+            }
+
+            .slide-image {
+                position: relative;
+            }
+            
+            .slide-image img {
+                width: 100%;
+                height: auto;
+                position: relative;
+                z-index: 0;
+            }
+
+            .slide-image::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+                z-index:22;
+            }
+            
+            .prev,
+            .next {
+                position: absolute;
+                top: 50%;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.5);
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease-in-out;
+            }
+            
+            .prev:hover,
+            .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+            
+            .prev {
+                left: 10px;
+            }
+            
+            .next {
+                right: 10px;
+            }
+            
+            .dots {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+            }
+            
+            .dot {
+                width: 12px;
+                height: 12px;
+                margin: 0 5px;
+                background-color: #5a5a5a;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background-color 0.1s ease-in-out;
+                opacity: 0.6;
+            }
+            
+            .dot:hover {
+                background-color: #393939;
+            }
+            
+            .dot.active {
+                background-color: #f9a51d;
+                opacity: 1;
+            }
+            
+            /* Optional: Add media query for responsiveness */
+            @media (max-width: 768px) {
+                .container-left,
+                .container-right {
+                    width: 100%;
+                }
+            
+                .slide-description {
+                    padding: 20px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slider">
+            <div class="slides-container">
+                <div class="slide">
+                    <div class="container-left">
+                        <div class="slide-description">
+
+                            <!-- SLIDE 1 -->
+
+                            <br><hr>
+                            <h1>Conversion</h1>                     
+                            <p>
+                                This program converts a number from one unit of measurement to another. The user can select the conversion type and enter a number to be converted. The result will be displayed in the result field.
+                                <br><br>
+                                <table>
+                                    <tr>
+                                        <th>Conversion Type</th>
+                                        <th>Formula</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Celsius to Fahrenheit</td>
+                                        <td>°F = (°C × 9/5) + 32</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fahrenheit to Celsius</td>
+                                        <td>°C = (32°F − 32) × 5/9</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Meters to Feet</td>
+                                        <td>ft ≈ m × 3.28084</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Feet to Meters</td>
+                                        <td>m ≈ ft / 3.28084</td>
+                                    </tr>
+                                </table>
+                            </p>
+                            <br><hr>
+                        </div>
+                    </div>
+                    <div class="container-right">
+                        <div class="slide-image"><img src="../images/conversion.jpeg" alt="Conversion"></div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="container-left">
+                        <div class="slide-description">
+
+                            <!-- SLIDE 2 -->
+                            <br><hr>
+                            <h1 style="font-size: 2.5rem;">Income Tax Calculator</h1>
+                            <p>Knowing your income tax is important. It helps you plan your finances and make better financial decisions. This program computes your income tax based on the tax table provided by the Bureau of Internal Revenue (BIR).
+                            </p>
+                            <br><br><hr>
+                        </div>
+                    </div>
+                    <div class="container-right">
+                        <div class="slide-image"><img src="../images/income-tax.jpeg" alt="Income Tax"></div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="container-left">
+                        <div class="slide-description">
+                            
+                            <!-- SLIDE 3 -->
+                            <br><hr>
+                            <h1>Loops</h1>
+                            <p>
+                                This program performs different operations depending on the selected operation type. Each operation uses different types loops to get the appropriate result. Factorial uses a while loop. Sum uses a do-while loop. Average uses a for loop.
+                            </p>
+                            <br><br><hr>
+                        </div>
+                    </div>
+                    <div class="container-right">
+                        <div class="slide-image"><img src="../images/loops.jpeg" alt="Loops"></div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="container-left">
+                        <div class="slide-description">
+
+                            <!-- SLIDE 4 -->
+                            <br><hr>
+                            <h1>Simple Payroll</h1>
+                            <p>
+                                This program computes the salary of an employee based on the number of days worked and the daily rate. The program also computes the gross and net pay. The program displays the data in a tabular format.
+                            </p>
+                            <br><br><hr>
+
+                        </div>
+                    </div>
+                    <div class="container-right">
+                        <div class="slide-image"><img src="../images/simple-payroll.jpeg" alt="Simple Payroll"></div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="container-left">
+                        <div class="slide-description">
+
+                            <!-- SLIDE 5 -->
+                            <br><hr>
+                            <h1>Compute Grade</h1>
+                            <p>
+                                This program computes the grade of a student based on the scores of the student's quizzes, assignments, and exams. The program displays the computed grade in the result field.
+                            </p>
+                            <br><br><hr>
+
+                        </div>
+                    </div>
+                    <div class="container-right">
+                        <div class="slide-image"><img src="../images/grade-computation.jpeg" alt="Compute Grade"></div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="container-left">
+                        <div class="slide-description">
+
+                            <!-- SLIDE 6 -->
+                            <br><hr>
+                            <h1>Add Two Numbers</h1>
+                            <p>
+                                This program adds two numbers and displays the result in the result field.
+                                <br><br>
+                                To use the program, enter two numbers in the input boxes below. The program will then compute the sum and display the result in the "Sum" box.
+                            </p>
+                            <br><br><hr>
+
+                        </div>
+                    </div>
+                    <div class="container-right">
+                        <div class="slide-image"><img src="../images/add-number.jpeg" alt="Add Two Numbers"></div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="container-left">
+                        <div class="slide-description">
+
+                            <!-- SLIDE 7 -->
+                            <br><hr>
+                            <h1>Shopping Cart</h1>
+                            <p>
+                                This program simulates a shopping cart. The user can select an item from the dropdown menu and enter the quantity of the item to be added to the cart. The program will then compute the total price of the item and display the result in the "Total Price" box. The program also displays the total price of all the items in the cart in the "Total" box.
+                             </p>
+                            <br><br><hr>
+
+                        </div>
+                    </div>
+                    <div class="container-right">
+                        <div class="slide-image"><img src="../images/shopping-cart.jpeg" alt="Shopping Cart"></div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="container-left">
+                        <div class="slide-description">
+
+                            <!-- SLIDE 8 -->
+                            <br><hr>
+                            <h1>All The Stars</h1>
+                            <p>
+                                Take a look at the stars. They're beautiful, aren't they? They're so beautiful that I can't help but stare at them all night. I wonder what they're doing up there. I wonder if they're looking back at me. I wonder if they're wondering what I'm doing down here.
+                                <br><br>
+                                One day, I'll be up there with them. I'll be up there with them, looking down at the world. I'll be up there with them, looking down at the world, wondering what the people down there are doing.
+                            </p>
+                            <br><br><hr>
+                        </div>
+                    </div>
+                    <div class="container-right">
+                        <div class="slide-image"><img src="../images/stars.jpeg" alt="All The Stars"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            
+            <div class="dots">
+                <span class="dot" onclick="changeSlideTo(0)"></span>
+                <span class="dot" onclick="changeSlideTo(1)"></span>
+                <span class="dot" onclick="changeSlideTo(2)"></span>
+                <span class="dot" onclick="changeSlideTo(3)"></span>
+                <span class="dot" onclick="changeSlideTo(4)"></span>
+                <span class="dot" onclick="changeSlideTo(5)"></span>
+                <span class="dot" onclick="changeSlideTo(6)"></span>
+                <span class="dot" onclick="changeSlideTo(7)"></span>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                clearInterval(slideInterval);
+                var speed = 0.5;
+                var waitTime = (speed) * 1000;
+                var intervalTime = 7 * 1000;
+                var currentSlide = 0;
+                var slidesContainer = document.querySelector('.slides-container');
+                var slides = document.querySelectorAll('.slide');
+                var dots = document.querySelectorAll('.dot');
+                var descriptions = document.querySelectorAll('.slide-description');
+
+                // Clone the first and last slide
+                var firstSlide = slides[0].cloneNode(true);
+                var lastSlide = slides[slides.length - 1].cloneNode(true);
+
+                // Add the cloned slides to the slides container
+                slidesContainer.appendChild(firstSlide);
+                slidesContainer.insertBefore(lastSlide, slides[0]);
+
+                // Update the slides and dots collections
+                slides = document.querySelectorAll('.slide');
+                dots = document.querySelectorAll('.dot');
+
+                // Adjust the initial slide index and transform to account for the added slides at the beginning
+                currentSlide = 1;
+                slidesContainer.style.transform = 'translateX(-100%)';
+
+
+                window.changeSlide = function(direction = 1) {
+                    // clearInterval(slideInterval);
+                    dots[currentSlide - 1].classList.remove('active'); // Adjust for the added slide at the beginning
+                    currentSlide = (currentSlide + direction) % slides.length;
+                    var dotIndex = currentSlide;
+                    if (currentSlide === 0) { // We're at the cloned last slide
+                        slidesContainer.style.transition = 'transform ' + speed + 's ease-out';
+                        slidesContainer.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+                        dotIndex = slides.length - 2; // Adjust the dot index
+                        setTimeout(() => {
+                            slidesContainer.style.transition = 'none';
+                            currentSlide = slides.length - 2;
+                            slidesContainer.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+                        }, waitTime); // Wait for the transition to finish before jumping to the original slide
+                    } else if (currentSlide === slides.length - 1) { // We're at the cloned first slide
+                        slidesContainer.style.transition = 'transform ' + speed + 's ease-out';
+                        slidesContainer.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+                        dotIndex = 1; // Adjust the dot index
+                        setTimeout(() => { // Hello, Kaiyou Here!
+                            slidesContainer.style.transition = 'none';
+                            currentSlide = 1;
+                            slidesContainer.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+                        }, waitTime); // Wait for the transition to finish before jumping to the original slide
+                    } else {
+                        slidesContainer.style.transition = 'transform ' + speed + 's ease-out';
+                        slidesContainer.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+                    }
+                    dots[dotIndex - 1].classList.add('active'); // Turn on the correct dot
+                    // setTimeout(startSlide, waitTime + intervalTime);
+                }
+
+                window.changeSlideTo = function(index) {
+                    var targetSlide = index + 1;
+                    var distance = Math.abs(targetSlide - currentSlide);
+                    var direction = (targetSlide - currentSlide > 0) ? 1 : -1;
+                    var duration = speed * distance;
+
+                    // If moving to the right and the target slide is the first slide (after the cloned last slide)
+                    // or if moving to the left and the target slide is the last slide (before the cloned first slide)
+                    // then the distance should be 1
+                    if ((direction === 1 && targetSlide === 1 && currentSlide === slides.length - 1) ||
+                        (direction === -1 && targetSlide === slides.length && currentSlide === 1)) {
+                        distance = 1;
+                        duration = speed;
+                    }
+
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    currentSlide = targetSlide;
+                    slidesContainer.style.transition = 'transform ' + duration + 's ease-out';
+                    slidesContainer.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+                    dots[index].classList.add('active');
+                }
+
+                // Initialize the first dot as active
+                dots[currentSlide - 1].classList.add('active');
+
+                var slider = document.querySelector('.slider');
+                var slideInterval;
+
+                function startSlide() {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(window.changeSlide, intervalTime);
+                }
+
+                function pauseSlide() {
+                    clearInterval(slideInterval);
+                }
+
+                // slider.addEventListener('mouseenter', pauseSlide);
+                
+                // slider.addEventListener('mouseleave', function() {
+                    // Start the interval after a delay
+                    // setTimeout(startSlide, waitTime + intervalTime);
+                // });
+                
+                slider.addEventListener('mousedown', function() {
+                    pauseSlide();
+                    // Clear the interval
+                    clearInterval(slideInterval);
+                });
+
+                slider.addEventListener('mouseup', function() {
+                    // Start the interval after a delay
+                    setTimeout(startSlide, waitTime + intervalTime);
+                });
+
+                var backupInterval = setInterval(startSlide, 25000);
+
+                // Start the slide immediately
+                startSlide();
+            });
+
+            window.onload = function() {
+                parent.postMessage(document.body.scrollHeight, "*");
+            }
+        </script>
+
+        <!-- HUHU KAPOI NA -->
+
+    </body>
+</html>

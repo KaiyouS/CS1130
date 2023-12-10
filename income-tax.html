@@ -1,40 +1,178 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Income Tax</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="shared.css">
+	<title>海容 | Income Tax</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/src/styles/shared.css">
+    <link rel="icon" href="/src/images/logo/favicon.ico">
+	<!---------- IMPORT HEADER ----------><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script>$(function(){$("#header").load("/header.html");});</script> 
 </head>
 <body>
-	<div class="container">
-		<h1>Income Tax Calculator</h1>
-		<label>Enter your income: </label>
-		<input type="text" id="income" onkeyup="incomeTax()">
-		<p id="result"></p>
-		<br><br>
-		<a href="index.html">Back to Home Page</a>
-		<br>
+	<!-- <div id="header"></div> -->
+	<!---------- HEADER ----------><header><div class="header-content"><h1><a href="index.html" class="logo-container"><img src="/src/images/logo/site-logo.png" alt="Site Logo" id="site-logo"><p id="logo-text">K A I Y O U</p></a></h1><nav><ul><li><a href="/index.html">Home</a></li><li class="dropdown"><a href="#">Assignments</a><div class="dropdown-content"><a href="/conversion.html">Assignment #1: Conversion</a><a href="/income-tax.html">Assignment #2: Income Tax</a><a href="/loops.html">Assignment #3: Loops</a><a href="/simple-payroll.html">Assignment #4: Simple Payroll</a></div></li><li class="dropdown"><a href="#">Other Programs</a><div class="dropdown-content"><a href="/src/programs/grade-computation.html">Compute Grade</a><a href="/src/programs/add-number.html">Add Two Numbers</a><a href="/src/programs/shopping-cart.html">Shopping Cart</a><a href="/src/programs/stars.html">All The Stars</a></div></li><li><a href="/about.html">About</a></li></ul></nav></div></header>
+	<div class="main-container">
+		<div class="page-description">
+			<h1>Income Tax Calculator</h1>
+			<br>
+			<p class="medium">This program serves as an Income Tax Calculator that allows users to input their taxable income and computes the corresponding income tax based on a predefined tax table. Income tax is a financial charge imposed on an individual's earnings, and the calculation follows a set of rules outlined in the table provided. 
+			<br><br>
+			To use the program, simply enter your income in the input box below. The program will then compute your income tax and display the result in the "Income Tax" box. The program will also highlight the row in the tax table that corresponds to your income.
+			</p>
+			<br><br><br>
+			<a href="index.html" id="home">Back to Home Page</a>
+			<hr><br>
+		</div>
+		<div class="content-wrapper">
+			<div class="container-left ratio-fifty">
+				<div class="content-left">
+					<label>Enter your income: </label>
+					<input type="text" id="income" placeholder="₱">
+					<button id="clear-button" >Clear Values</button>
+					<br><br>
+					<p class="lighter-color">
+						<b>NOTE:</b> The program will only accept numbers. If you enter a non-numeric value (including ',' comma), the program will display an error message in the "Taxable Income" and "Income Tax" boxes.
+						<br><br>
+						<b>NOTE:</b> This calculator can accurately handle numbers up to 9,007,199,254,740,991. For numbers larger than this, the calculator may not provide accurate results due to limitations in how large numbers are handled. Please be aware of this when entering large numbers.
+					</p>
+				</div>
+			</div>
+			<div class="container-right ratio-fifty">
+				<div class="content-right">
+					<label for="formatted-input">Taxable Income: </label>
+					<input type="text" id="formatted-input" placeholder="₱" readonly>
+					<br><br>
+					<label for="result">Income Tax: </label>
+					<input type="text" id="result" placeholder="₱" readonly>
+					<br><br>
+					<label for="after-tax">Income After Tax:</label>
+					<input type="text" id="after-tax" placeholder="₱" readonly>
+					<br><br><br>
+					<label for="tax-table">Graduated Income Tax Rates: </label>
+					<br>
+					<table>
+						<tbody>
+							<tr id="row1">
+								<td colspan="2" ><strong><span>Amount of Net Taxable Income</span></strong></td>
+								<td rowspan="2"><strong><span>Rate</span></strong></td>
+							</tr>
+							<tr id="row2">
+								<td ><strong><span>Over</span></strong></td>
+								<td ><strong><span>But Not Over</span></strong></td>
+							</tr>
+							<tr id="row3">
+								<td ><span>- - -</span></td>
+								<td ><span>₱ 250,000</span></td>
+								<td ><span>0%</span></td>
+							</tr>
+							<tr id="row4">
+								<td ><span>₱ 250,000</span></td>
+								<td ><span>₱ 400,000</span></td>
+								<td ><span>20% of the excess over ₱ 250,000</span></td>
+							</tr>
+							<tr id="row5">
+								<td ><span>₱ 400,000</span></td>
+								<td ><span>₱ 800,000</span></td>
+								<td ><span>₱ 30,000 + 25% of the excess over ₱ 400,000</span></td>
+							</tr>
+							<tr id="row6">
+								<td ><span>₱ 800,000</span></td>
+								<td ><span>₱ 2,000,000</span></td>
+								<td ><span>₱ 130,000 + 30% of the excess over ₱ 800,000</span></td>
+							</tr>
+							<tr id="row7">
+								<td ><span>₱ 2,000,000</span></td>
+								<td ><span>₱ 8,000,000</span></td>
+								<td ><span>₱ 490,000 + 32% of the excess over ₱ 2,000,000</span></td>
+							</tr>
+							<tr id="row8">
+								<td ><span>₱ 8,000,000</span></td>
+								<td >- - -</td>
+								<td ><span>₱ 2,410,000 + 35% of the excess over ₱ 8,000,000</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
+
 	<script>
-		function incomeTax () {
-			var income = document.getElementById('income').value * 1;
+		document.getElementById('income').addEventListener('input', calculateIncomeTax);
+		document.getElementById('clear-button').addEventListener('click', clearValues);
+
+		function calculateIncomeTax() {
+			var income = document.getElementById('income').value;
+			
+			if (!isNaN(income)) {
+				tax = incomeTax(income);
+				document.getElementById('formatted-input').value = '₱ ' + Number(income).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+				document.getElementById('result').value = '₱ ' + Number(tax).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+				document.getElementById('after-tax').value = '₱ ' + Number(income - tax).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+			} else {
+				document.getElementById('formatted-input').value = 'Please enter a valid number.';
+				document.getElementById('result').value = 'Please enter a valid number.';
+				document.getElementById('after-tax').value = 'Please enter a valid number.';
+
+				var rows = document.getElementsByTagName('tr');
+				for (var i = 0; i < rows.length; i++) {
+					rows[i].classList.remove('highlight');
+				}
+			}
+		}
+
+		function formatInput() {
+			var income = document.getElementById('income').value;
+			income = Number(income).toLocaleString();
+			income = '₱ ' + income;
+			document.getElementById('income').value = income;
+		}
+
+		function incomeTax (income) {
 			var tax = 0.0;
 
-			if (income < 250000) {
+			if (income <= 250000) {
 				tax = 0.0;
-			} else if (income < 400000) {
+				row = document.getElementById('row3');
+			} else if (income <= 400000) {
 				tax = (income - 250000) * 0.20;
-			} else if (income < 800000) {
+				row = document.getElementById('row4');
+			} else if (income <= 800000) {
 				tax = (income - 400000) * 0.25 + 30000;
-			} else if (income < 2000000) {
+				row = document.getElementById('row5');
+			} else if (income <= 2000000) {
 				tax = (income - 800000) * 0.30 + 130000; 
-			} else if (income < 8000000) {
+				row = document.getElementById('row6');
+			} else if (income <= 8000000) {
 				tax = (income - 2000000) * 0.32 + 490000;
+				row = document.getElementById('row7');
 			} else {
 				tax = (income - 8000000) * 0.35 + 2410000;
+				row = document.getElementById('row8');
 			}
 
-			document.getElementById('result').innerHTML = 'Your income tax is: ' + tax;
+			// Remove the class from all rows
+			var rows = document.getElementsByTagName('tr');
+			for (var i = 0; i < rows.length; i++) {
+				rows[i].classList.remove('highlight');
+			}
+
+			// Add the class to the appropriate row
+			row.classList.add('highlight');
+
+			
+			return tax;
+		}
+
+		function clearValues () {
+			document.getElementById('income').value = '';
+			document.getElementById('formatted-input').value = '';
+			document.getElementById('result').value = '';
+			document.getElementById('after-tax').value = '';
+
+			var rows = document.getElementsByTagName('tr');
+			for (var i = 0; i < rows.length; i++) {
+				rows[i].classList.remove('highlight');
+			}
 		}
 	</script>
 </body>

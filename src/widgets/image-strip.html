@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>海容 | Image Strip</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="../images/logo/site-logo.ico">
+        <style>
+            body {
+                min-height: 100vh;
+                display: grid;
+                place-items: center;
+                overflow: hidden;
+                background: #ffffff;
+              }
+              
+              .slider {
+                height: 100%;
+                margin: auto;
+                position: relative;
+                width: auto;
+                display: grid;
+                place-items: center;
+                overflow: hidden;
+              }
+              
+              .slide-track {
+                display: flex;
+                width: calc(250px * 18);
+                animation: scroll 15s linear infinite;
+              }
+
+              .slide-track:hover {
+                animation-play-state: paused;
+              }
+              
+              @keyframes scrollLeft {
+                0% {
+                  transform: translateX(calc(-250px * 9));
+                }
+                100% {
+                  transform: translateX(0);
+                }
+              }
+              
+              @keyframes scrollRight {
+                0% {
+                  transform: translateX(0);
+                }
+                100% {
+                  transform: translateX(calc(-250px * 9));
+                }
+              }
+              
+              .slider:nth-child(4n+1) .slide-track {
+                animation: scrollLeft 10s linear infinite;
+              }
+              
+              .slider:nth-child(4n+2) .slide-track {
+                animation: scrollRight 18s linear infinite;
+              }
+              
+              .slider:nth-child(4n+3) .slide-track {
+                animation: scrollLeft 15s linear infinite;
+              }
+              
+              .slider:nth-child(4n) .slide-track {
+                animation: scrollRight 15s linear infinite;
+              }
+              
+              .slide {
+                height: 200px;
+                width: 220px;
+                display: flex;
+                align-items: center;
+                padding: 15px;
+                perspective: 100px;
+              }
+              
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 1s;
+              }
+              
+              img:hover {
+                transform: translateZ(20px);
+              }
+              
+              .slider::before, .slider::after {
+                background: linear-gradient(to right, rgb(255,255,255,1) 0%, rgba(255, 255, 255, 0) 100%);
+                content: '';
+                height: 100%;
+                position: abosolute;
+                width: 15%;
+                z-index: 2;
+              }
+              
+              .slider::before {
+                left: 0;
+                top: 0;
+              }
+              
+              .slider::after {
+                right: 0;
+                top: 0;
+                transform: rotateZ(180deg);
+              }
+        </style>
+    </head>
+    <body>
+        <div class="slider">
+            <div class="slide-track">
+                <a class="slide" href="conversion.html"><img src="../images/conversion.jpeg" alt="Conversion" class="content-image"></a>
+                <a class="slide" href="income-tax.html"><img src="../images/income-tax.jpeg" alt="Income Tax" class="content-image"></a>
+                <a class="slide" href="operations.html"><img src="../images/loops.jpeg" alt="Operations" class="content-image"></a>
+                <a class="slide" href="simple-payroll.html"><img src="../images/simple-payroll.jpeg" alt="Simple Payroll" class="content-image"></a>
+                <a class="slide" href="grade-computation.html"><img src="../images/grade-computation.jpeg" alt="Compute Grade" class="content-image"></a>
+                <a class="slide" href="add-number.html"><img src="../images/add-number.jpeg" alt="Add Two Numbers" class="content-image"></a>
+                <a class="slide" href="shopping-cart.html"><img src="../images/shopping-cart.jpeg" alt="Shopping Cart" class="content-image"></a>
+                <a class="slide" href="stars.html"><img src="../images/stars.jpeg" alt="All The Stars" class="content-image"></a>
+              
+                <a class="slide" href="conversion.html"><img src="../images/conversion.jpeg" alt="Conversion" class="content-image"></a>
+                <a class="slide" href="income-tax.html"><img src="../images/income-tax.jpeg" alt="Income Tax" class="content-image"></a>
+                <a class="slide" href="operations.html"><img src="../images/loops.jpeg" alt="Operations" class="content-image"></a>
+                <a class="slide" href="simple-payroll.html"><img src="../images/simple-payroll.jpeg" alt="Simple Payroll" class="content-image"></a>
+                <a class="slide" href="grade-computation.html"><img src="../images/grade-computation.jpeg" alt="Compute Grade" class="content-image"></a>
+                <a class="slide" href="add-number.html"><img src="../images/add-number.jpeg" alt="Add Two Numbers" class="content-image"></a>
+                <a class="slide" href="shopping-cart.html"><img src="../images/shopping-cart.jpeg" alt="Shopping Cart" class="content-image"></a>
+                <a class="slide" href="stars.html"><img src="../images/stars.jpeg" alt="All The Stars" class="content-image"></a>
+            </div>
+        </div>
+        <div class="slider">
+          <div class="slide-track">
+              <a class="slide" href="conversion.html"><img src="../images/conversion.jpeg" alt="Conversion" class="content-image"></a>
+              <a class="slide" href="income-tax.html"><img src="../images/income-tax.jpeg" alt="Income Tax" class="content-image"></a>
+              <a class="slide" href="operations.html"><img src="../images/loops.jpeg" alt="Operations" class="content-image"></a>
+              <a class="slide" href="simple-payroll.html"><img src="../images/simple-payroll.jpeg" alt="Simple Payroll" class="content-image"></a>
+              <a class="slide" href="grade-computation.html"><img src="../images/grade-computation.jpeg" alt="Compute Grade" class="content-image"></a>
+              <a class="slide" href="add-number.html"><img src="../images/add-number.jpeg" alt="Add Two Numbers" class="content-image"></a>
+              <a class="slide" href="shopping-cart.html"><img src="../images/shopping-cart.jpeg" alt="Shopping Cart" class="content-image"></a>
+              <a class="slide" href="stars.html"><img src="../images/stars.jpeg" alt="All The Stars" class="content-image"></a>
+            
+              <a class="slide" href="conversion.html"><img src="../images/conversion.jpeg" alt="Conversion" class="content-image"></a>
+              <a class="slide" href="income-tax.html"><img src="../images/income-tax.jpeg" alt="Income Tax" class="content-image"></a>
+              <a class="slide" href="operations.html"><img src="../images/loops.jpeg" alt="Operations" class="content-image"></a>
+              <a class="slide" href="simple-payroll.html"><img src="../images/simple-payroll.jpeg" alt="Simple Payroll" class="content-image"></a>
+              <a class="slide" href="grade-computation.html"><img src="../images/grade-computation.jpeg" alt="Compute Grade" class="content-image"></a>
+              <a class="slide" href="add-number.html"><img src="../images/add-number.jpeg" alt="Add Two Numbers" class="content-image"></a>
+              <a class="slide" href="shopping-cart.html"><img src="../images/shopping-cart.jpeg" alt="Shopping Cart" class="content-image"></a>
+              <a class="slide" href="stars.html"><img src="../images/stars.jpeg" alt="All The Stars" class="content-image"></a>
+          </div>
+      </div>
+      <div class="slider">
+        <div class="slide-track">
+            <a class="slide" href="conversion.html"><img src="../images/conversion.jpeg" alt="Conversion" class="content-image"></a>
+            <a class="slide" href="income-tax.html"><img src="../images/income-tax.jpeg" alt="Income Tax" class="content-image"></a>
+            <a class="slide" href="operations.html"><img src="../images/loops.jpeg" alt="Operations" class="content-image"></a>
+            <a class="slide" href="simple-payroll.html"><img src="../images/simple-payroll.jpeg" alt="Simple Payroll" class="content-image"></a>
+            <a class="slide" href="grade-computation.html"><img src="../images/grade-computation.jpeg" alt="Compute Grade" class="content-image"></a>
+            <a class="slide" href="add-number.html"><img src="../images/add-number.jpeg" alt="Add Two Numbers" class="content-image"></a>
+            <a class="slide" href="shopping-cart.html"><img src="../images/shopping-cart.jpeg" alt="Shopping Cart" class="content-image"></a>
+            <a class="slide" href="stars.html"><img src="../images/stars.jpeg" alt="All The Stars" class="content-image"></a>
+          
+            <a class="slide" href="conversion.html"><img src="../images/conversion.jpeg" alt="Conversion" class="content-image"></a>
+            <a class="slide" href="income-tax.html"><img src="../images/income-tax.jpeg" alt="Income Tax" class="content-image"></a>
+            <a class="slide" href="operations.html"><img src="../images/loops.jpeg" alt="Operations" class="content-image"></a>
+            <a class="slide" href="simple-payroll.html"><img src="../images/simple-payroll.jpeg" alt="Simple Payroll" class="content-image"></a>
+            <a class="slide" href="grade-computation.html"><img src="../images/grade-computation.jpeg" alt="Compute Grade" class="content-image"></a>
+            <a class="slide" href="add-number.html"><img src="../images/add-number.jpeg" alt="Add Two Numbers" class="content-image"></a>
+            <a class="slide" href="shopping-cart.html"><img src="../images/shopping-cart.jpeg" alt="Shopping Cart" class="content-image"></a>
+            <a class="slide" href="stars.html"><img src="../images/stars.jpeg" alt="All The Stars" class="content-image"></a>
+        </div>
+    </div>
+    <div class="slider">
+      <div class="slide-track">
+          <a class="slide" href="conversion.html"><img src="../images/conversion.jpeg" alt="Conversion" class="content-image"></a>
+          <a class="slide" href="income-tax.html"><img src="../images/income-tax.jpeg" alt="Income Tax" class="content-image"></a>
+          <a class="slide" href="operations.html"><img src="../images/loops.jpeg" alt="Operations" class="content-image"></a>
+          <a class="slide" href="simple-payroll.html"><img src="../images/simple-payroll.jpeg" alt="Simple Payroll" class="content-image"></a>
+          <a class="slide" href="grade-computation.html"><img src="../images/grade-computation.jpeg" alt="Compute Grade" class="content-image"></a>
+          <a class="slide" href="add-number.html"><img src="../images/add-number.jpeg" alt="Add Two Numbers" class="content-image"></a>
+          <a class="slide" href="shopping-cart.html"><img src="../images/shopping-cart.jpeg" alt="Shopping Cart" class="content-image"></a>
+          <a class="slide" href="stars.html"><img src="../images/stars.jpeg" alt="All The Stars" class="content-image"></a>
+        
+          <a class="slide" href="conversion.html"><img src="../images/conversion.jpeg" alt="Conversion" class="content-image"></a>
+          <a class="slide" href="income-tax.html"><img src="../images/income-tax.jpeg" alt="Income Tax" class="content-image"></a>
+          <a class="slide" href="operations.html"><img src="../images/loops.jpeg" alt="Operations" class="content-image"></a>
+          <a class="slide" href="simple-payroll.html"><img src="../images/simple-payroll.jpeg" alt="Simple Payroll" class="content-image"></a>
+          <a class="slide" href="grade-computation.html"><img src="../images/grade-computation.jpeg" alt="Compute Grade" class="content-image"></a>
+          <a class="slide" href="add-number.html"><img src="../images/add-number.jpeg" alt="Add Two Numbers" class="content-image"></a>
+          <a class="slide" href="shopping-cart.html"><img src="../images/shopping-cart.jpeg" alt="Shopping Cart" class="content-image"></a>
+          <a class="slide" href="stars.html"><img src="../images/stars.jpeg" alt="All The Stars" class="content-image"></a>
+      </div>
+  </div>
+    </body>
+</html>

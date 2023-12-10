@@ -3,120 +3,203 @@
 <head>
     <title>海容 | Home</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-	<link rel="icon" href="site-logo.ico">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="icon" href="/src/images/logo/favicon.ico">
+    <!---------- IMPORT HEADER ----------><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script>$(function(){$("#header").load("header.html");});</script>
 </head>
 <body>
-    <div class="content">
-        <header>
-            <div class="header-content">
-                <h1>
-                    <a href="index.html" class="logo-container">
-                        <img src="site-logo.png" alt="Site Logo" id="site-logo">
-                        <p>K A I Y O U</p>
-                    </a>
-                </h1>
-                  
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li class="dropdown">
-                            <a href="#">Assignments</a>
-                            <div class="dropdown-content">
-                                <a href="conversion.html">Assignment #1: Conversion</a>
-                                <a href="income-tax.html">Assignment #2: Income Tax Calculator</a>
-                                <a href="operations.html">Assignment #3: Operations</a>
-                                <a href="simple-payroll.html">Assignment #4: Simple Payroll</a>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">Other Programs</a>
-                            <div class="dropdown-content">
-                                <a href="grade-computation.html">Compute Grade</a>
-                                <a href="add-number.html">Add Two Numbers</a>
-                                <a href="shopping-cart.html">Shopping Cart</a>
-                                <a href="stars.html">All The Stars</a>
-                            </div>
-                        </li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
-                </nav>
+    <!-- <div id="header"></div>     -->
+    <!---------- HEADER ----------><header><div class="header-content"><h1><a href="index.html" class="logo-container"><img src="/src/images/logo/site-logo.png" alt="Site Logo" id="site-logo"><p id="logo-text">K A I Y O U</p></a></h1><nav><ul><li><a href="/index.html">Home</a></li><li class="dropdown"><a href="#">Assignments</a><div class="dropdown-content"><a href="/conversion.html">Assignment #1: Conversion</a><a href="/income-tax.html">Assignment #2: Income Tax</a><a href="/loops.html">Assignment #3: Loops</a><a href="/simple-payroll.html">Assignment #4: Simple Payroll</a></div></li><li class="dropdown"><a href="#">Other Programs</a><div class="dropdown-content"><a href="/src/programs/grade-computation.html">Compute Grade</a><a href="/src/programs/add-number.html">Add Two Numbers</a><a href="/src/programs/shopping-cart.html">Shopping Cart</a><a href="/src/programs/stars.html">All The Stars</a></div></li><li><a href="/about.html">About</a></li></ul></nav></div></header>
+    <div id="hamburger-container" class="hamburger-container" onclick="openNav()">
+        <span class="hamburger-icon">&#9776;</span>
+    </div>
+    <div style="clear: both;"></div>
+    <iframe src="src/widgets/image-carousel.html" style="border: none; overflow: hidden; width: 100%; height: 100%;"></iframe>
+    <div class="main-container">
+        <br><br><br>
+        <div class="page-description">
+            <div class="content-flex">
+                <img src="src/images/introduction-to-computing.jpeg" alt="Introduction to Computing">
+                <div>
+                    <h1 class="center giant">CS 1130: ITC Projects</h1>
+                    <br><br><br>
+                    <p class="large">
+                        Venture into the world of computing. This website contains the projects and other programs created by <b>Kaiyou Serra</b> of <b>CS 1-C</b> for the course CS 1130: Introduction to Computing.
+                        <br><br>
+                        The course introduces students to the fundamentals of computers. It discusses the use of computing and information technology to solve problems, the components of a computer, and the creation of documents and spreadsheets.
+                        <br><br>
+                        The course also introduces students to the fundamentals of programming. It introduces basic programming concepts such as variables, data types, operators, and control structures. It also introduces fundamental object-oriented programming concepts such as classes, objects, and methods.
+                        <br><br><br><br>
+                        Check out the source code <a href="https://github.com/KaiyouS/CS1130">here</a>.
+                    </p>
+                </div>
             </div>
-        </header>
-
-        <div id="hamburger-container" class="hamburger-container" onclick="openNav()">
-            <span class="hamburger-icon">&#9776;</span>
         </div>
-        <h1 id="text-title">HELLO</h1>
-        <div class="container">
-            <div class="div1">
-                <div class="text-content">
+        <br>
+
+        <!---------- ASSIGNMENTS ---------->
+        <br><br><br><br><br><br><br>
+        <h1 class="center">ASSIGMENTS</h1>
+        <div class="content-wrapper">
+            <div class="content">
+                <div class="content-image">
+                    <img src="src/images/conversion.jpeg" alt="Conversion">
+                </div>
+                <div class="content-description">
+                    <h2>Conversion</h2>
+                    <p>
+                        Convert temperature from Celsius to Fahrenheit and vice versa. Convert length from meters to feet and vice versa.
+                    </p>
                     <br>
-                    <h1>Assignments:  (NOT DONE YET as of 12/07/2023)</h1>
-                    <hr>
-                    <p>
-                        <b>Assignment #1:</b> Conversion (Temperature and Length)<br>
-                        <b>Assignment #2:</b> Income Tax Calculator<br>
-                        <b>Assignment #3:</b> Operations - Factorial, Sum, and Average<br>
-                        <b>Assignment #4:</b> Simple Payroll<br>
-                        <hr>
-                    </p>
-                    <h1>Other:</h1>
-                    <hr>
-                    <p>
-                        <b>Grade Computation:</b> Compute Grade<br>
-                        <b>Add Two Numbers:</b> Add Two Numbers<br>
-                        <b>Shopping Cart:</b> Shopping Cart<br>
-                        <b>All The Stars:</b> ???<br>
-                        <b>Click:</b> 海容<br>
-                        <br>
-                    </p>
+                    <a href="conversion.html" class="button">View Program</a>
                 </div>
             </div>
-            <div class="div2">
-                <br>
-                <div class="grid-container">
-                    <div class="grid-title">Programs</div>
-                    <div class="main-grid">
-                        <a href="conversion.html" id="conv">Conversion</a>
-                        <a href="income-tax.html" id="inco">Income Tax</a>
-                        <a href="operations.html" id="oper">Operations</a>
-                        <a href="simple-payroll.html" id="payr">Simple Payroll</a>
-                        <a href="grade-computation.html" id="grad">Compute Grade</a>
-                        <a href="add-number.html" id="add">Add Two Numbers</a>
-                        <a href="shopping-cart.html" id="cart">Shopping Cart</a>
-                        <a href="stars.html" id="star">???</a>
-                    </div>
+            <div class="content">
+                <div class="content-image">
+                    <img src="src/images/income-tax.jpeg" alt="Income Tax">
+                </div>
+                <div class="content-description">
+                    <h2>Income Tax</h2>
+                    <p>
+                        Calculate the income tax. The program calculates the income tax based on the income tax table. The program also calculates the net income of the person.
+                    </p>
+                    <br>
+                    <a href="income-tax.html" class="button">View Program</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-image">
+                    <img src="src/images/loops.jpeg" alt="Loops">
+                </div>
+                <div class="content-description">
+                    <h2>Loops</h2>
+                    <p>
+                        Calculate the Nth factorial, sum and average of the first N numbers. The program calculates the factorial, sum, and average of all the numbers from 1 to the number inputted by the user.
+                    </p>
+                    <br>
+                    <a href="loops.html" class="button">View Program</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-image">
+                    <img src="src/images/simple-payroll.jpeg" alt="Simple Payroll">
+                </div>
+                <div class="content-description">
+                    <h2>Simple Payroll</h2>
+                    <p>
+                        This program calculates the gross pay, deductions, and net pay of an employee. The user inputs the employee's name, hours worked, and hourly rate. The program calculates the gross pay, deductions, and net pay of the employee. The program also calculates the gross pay, deductions, and net pay of all the employees.
+                    </p>
+                    <br>
+                    <a href="simple-payroll.html" class="button">View Program</a>
+                </div> 
+            </div>
+        </div>
+
+        <!---------- OTHER PROGRAMS ---------->
+        <br><br><br><br><br><br><br>
+        <h1 class="center">OTHER PROGRAMS</h1>
+        <div class="content-wrapper">
+            <div class="content">
+                <div class="content-image">
+                    <img src="src/images/grade-computation.jpeg" alt="Grade Computation">
+                </div>
+                <div class="content-description">
+                    <h2 id="longString">Grade Computation</h2>
+                    <p>
+                        This program computes the grade of a student based on the student's scores in the quizzes, assignments, and exams. The program also computes the student's final grade.
+                    </p>
+                    <br>
+                    <a href="src/programs/grade-computation.html" class="button">View Program</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-image">
+                    <img src="src/images/add-number.jpeg" alt="Add Two Numbers">
+                </div>
+                <div class="content-description">
+                    <h2>Add Two Numbers</h2>
+                    <p>
+                        This program adds two numbers. The user inputs two numbers and the program adds the two numbers.
+                    </p>
+                    <br>
+                    <a href="src/programs/add-number.html" class="button">View Program</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-image">
+                    <img src="src/images/shopping-cart.jpeg" alt="Shopping Cart">
+                </div>
+                <div class="content-description">
+                    <h2>Shopping Cart</h2>
+                    <p>
+                        This program calculates the total price of the items in the shopping cart. The user inputs the name and price of the item. The program calculates the total price of the items in the shopping cart.
+                    </p>
+                    <br>
+                    <a href="src/programs/shopping-cart.html" class="button">View Program</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-image">
+                    <img src="src/images/stars.jpeg" alt="All The Stars">
+                </div>
+                <div class="content-description">
+                    <h2>All The Stars</h2>
+                    <p>
+                        Look how they shine for you.
+                    </p>
+                    <br>
+                    <a href="src/programs/stars.html" class="button">View Program</a>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <h2>ITC: Assignments</h2>
-        <a href="conversion.html">Conversion</a>
-        <a href="income-tax.html">Income Tax</a>
-        <a href="operations.html">Operations</a>
-        <a href="simple-payroll.html">Simple Payroll</a>
-        <a href="grade-computation.html">Compute Grade</a>
-        <a href="add-number.html">Add Two Numbers</a>
-        <a href="shopping-cart.html">Shopping Cart</a>
+        <br><br><br><br>
     </div>
 
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" id="closeButton" onclick="closeNav()">&times;</a>
+        <p class="medium white text-shadow">
+            <b class="giant">CS1130</b><br><i class="small">Introduction to Computing</i><br><br><br>
+            <b>Author:</b><br>Kaiyou Serra (海容)<br><br>
+            <b>Student Number:</b><br>2202301*****8<br><br>
+            <b>Course:</b><br>BS Computer Science<br><br>
+            <b>Block:</b><br>1-C<br><br>
+            <b>School Email:</b><br>kserra@addu.edu.ph<br><br>
+            <b>Source Code:</b><br><a href="https://github.com/KaiyouS/CS1130">github.com/KaiyouS/CS1130</a><br>
+        </p>
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Kaiyou Serra. All rights reserved.</p>
+    </footer>
+    
     <script>
         function openNav() {
-            document.getElementById("mySidenav").style.width = "23%";
+            document.getElementById("mySidenav").classList.add("open");
             document.getElementById("hamburger-container").classList.add("hide");
-            document.querySelector(".content").classList.add("move");
+            document.querySelector(".main-container").classList.add("move");
         }
           
         function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("mySidenav").classList.remove("open");
             document.getElementById("hamburger-container").classList.remove("hide");
-            document.querySelector(".content").classList.remove("move");
+            document.querySelector(".main-container").classList.remove("move");
         }
+
+        window.addEventListener("message", function(event) {
+            var iframe = document.querySelector('iframe');
+            iframe.style.height = event.data + 'px';
+        }, false);
+
+        window.addEventListener('scroll', function() {
+            var footer = document.querySelector('footer');
+            var scrollPosition = window.pageYOffset;
+            var windowHeight = window.innerHeight;
+            
+            if (scrollPosition > windowHeight) {
+              footer.classList.add('visible');
+            } else {
+              footer.classList.remove('visible');
+            }
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,192 @@
+<!-- CODE BY: SIR JRGERALDE -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>海容 | Shopping Cart</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/src/styles/shared.css">
+    <link rel="icon" href="/src/images/logo/favicon.ico">
+	<!---------- IMPORT HEADER ----------><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script>$(function(){$("#header").load("/header.html");});</script> 
+</head>
+<body>
+	<!-- <div id="header"></div> -->
+    <!---------- HEADER ----------><header><div class="header-content"><h1><a href="index.html" class="logo-container"><img src="/src/images/logo/site-logo.png" alt="Site Logo" id="site-logo"><p id="logo-text">K A I Y O U</p></a></h1><nav><ul><li><a href="/index.html">Home</a></li><li class="dropdown"><a href="#">Assignments</a><div class="dropdown-content"><a href="/conversion.html">Assignment #1: Conversion</a><a href="/income-tax.html">Assignment #2: Income Tax</a><a href="/loops.html">Assignment #3: Loops</a><a href="/simple-payroll.html">Assignment #4: Simple Payroll</a></div></li><li class="dropdown"><a href="#">Other Programs</a><div class="dropdown-content"><a href="/src/programs/grade-computation.html">Compute Grade</a><a href="/src/programs/add-number.html">Add Two Numbers</a><a href="/src/programs/shopping-cart.html">Shopping Cart</a><a href="/src/programs/stars.html">All The Stars</a></div></li><li><a href="/about.html">About</a></li></ul></nav></div></header>
+    <div class="main-container">
+        <div class="page-description">
+            <h1>Shopping Cart</h1>
+            <br>
+            <p class="medium">
+                This program allows users to add items to a shopping cart. The program also displays the total number of items in the cart and the total amount of all items in the cart. 
+                <br><br>
+                To use the program, simply choose an item from the drop-down list, enter the quantity and unit price in the input boxes, and click the "Add to Cart" button. The program will then add the item to the cart and display the total number of items in the cart and the total amount of all items in the cart. The program will also display the contents of the cart in a table. 
+                <br><br>
+                To delete an item from the cart, simply enter the item number in the "Delete Item" input box and click the "Delete" button. The program will then delete the item from the cart and display the updated total number of items in the cart and the updated total amount of all items in the cart. The program will also display the updated contents of the cart in a table. 
+            </p>
+            <br><br><br>
+            <a href="../../index.html" id="home">Back to Home Page</a>
+            <hr><br>
+        </div>
+        <div class="content-wrapper">
+            <div class="container-left ratio-thirty">
+                <div class="content-left">
+                    <br>
+                    <label for="itemdesc">Choose an item:</label>    
+                    <select name="itemdesc" id="itemdesc">
+                        <option value="Ferrero Rocher">Ferrero Rocher</option>
+                        <option value="KitKat">KitKat</option>
+                        <option value="Toblerone">Toblerone</option>
+                        <option value="Cadbury Dairy Milk">Cadbury Dairy Milk</option>
+                        <option value="Twix">Twix</option>
+                        <option value="Snickers">Snickers</option>
+                        <option value="Mars">Mars</option>
+                        <option value="Bounty">Bounty</option>
+                        <option value="Milky Way">Milky Way</option>
+                        <option value="M&M's">M&M's</option>
+                        <option value="Hershey's">Hershey's</option>
+                        <option value="Kisses">Hershey's Kisses</option>
+                    </select>
+                    <br>
+                    <form id="cartForm">
+                        <label for="qty">Quantity:</label>
+                        <input id="qty" name="qty" type="number" oninput="computeAmount()" required></input>
+                        <br>
+                        <label for="price">Unit Price:</label>
+                        <input id="price" name="price" type="number" oninput="computeAmount()" required></input>
+                        <br>
+                        <label for="amount">Amount:</label>
+                        <input id="amount" name="amount" type="text" readonly></input>
+                        <button type="submit">Add to Cart</button>
+                    </form>
+                    <hr>
+                    <label for="items">Cart Items:</label>
+                    <input id="items" name="items" type="number" readonly></input>
+                    <button class="caution-color" onclick="clearCart()">Clear Cart</button>
+                    <br>
+                    <label for="deleteItem">Delete Item:</label>
+                    <input id="deleteItem" name="deleteItem" type="number" ></input>
+                    <button class="caution-color" onclick="deleteitem()" >Delete</button>  
+                    <br>
+                </div>
+            </div>
+            <div class="container-right ratio-seventy">
+                <div class="content-right">
+                    <p class="center medium" id="cart"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize cart      
+        function initializeCart(){
+            cart = [];
+            document.getElementById("items").value = cart.length;
+            document.getElementById("cart").innerHTML = "";
+        }
+    
+        // Clear Cart
+        function clearCart(){
+            var toclear;
+            toclear = confirm("Delete all item(s) from cart ?");
+            if (toclear) {
+                initializeCart();
+            }
+        }
+        
+        document.getElementById('cartForm').addEventListener('submit', addToCart);
+        // Add item to cart
+        function addToCart(){
+            event.preventDefault();
+
+            var cartitem = {
+                "item": "1", 
+                "price": 0, 
+                "qty": 1, 
+                "itemamount" : function itemamount(){
+                    return Math.round(this.price*this.qty*100)/100;  
+                }
+            };
+    
+            cartitem.item = document.getElementById("itemdesc").value;
+            cartitem.qty = document.getElementById("qty").value;
+            cartitem.price = document.getElementById("price").value;
+    
+            cart.push(cartitem);
+            document.getElementById("items").value = cart.length;
+            showcart();
+        }
+    
+        // Compute Amount per Item
+        function computeAmount() {
+            var q, p, q;
+            q = document.getElementById("qty").value*1;
+            p = document.getElementById("price").value*1;
+            a = Math.round(q * p * 100) / 100;
+            document.getElementById("amount").value = '₱ ' + Number(a).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }    
+    
+        // Delete item from chart
+        function deleteitem(){
+            var toDelete;
+            var itemNumber;
+            itemNumber = document.getElementById("deleteItem").value;
+            toDelete = confirm("Delete item no. "+itemNumber+"?");
+            if (toDelete) {
+                cart.splice(itemNumber - 1, 1);
+                document.getElementById("items").value = cart.length;
+                showcart();   
+            }
+        }
+    
+        // Show the contents of the cart
+        function showcart(){
+            var i, l, carttext, totalamount, ln;
+            var theader, tbody, tb, tfooter;
+    
+            // Generate table header;
+            theader  = "<thead>";
+            theader += "<tr>";
+            theader += "<th>No.</th>";
+            theader += '<th>Item</th>';
+            theader += "<th>Quantity</th>";
+            theader += '<th>Price</th>';
+            theader += "<th>Amount</th>";
+            theader += "</tr>";
+            theader += "</thead>";
+    
+            // Generate Table Body
+            l = cart.length;
+    
+            for (i=0, totalamount=0, carttext="", tbody='';i<l;i++){
+                ln=i+1;    
+                tbody += "<tr>"
+                    + '<td>' + ln +' </td>'
+                    + '<td>' + cart[i].item + ' </td>'
+                    + '<td>' + cart[i].qty + '</td>'
+                    + '<td>₱ ' + Number(cart[i].price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</td>'
+                    + '<td>₱ ' + Number(cart[i].itemamount()).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</td>'
+                    + "</tr>";
+                totalamount += cart[i].itemamount();
+            }
+    
+            // Generate table footer;
+            tfooter = "<tfoot>";
+            tfooter += "<tr>";
+            tfooter += '<th>'+cart.length+'</th>';
+            tfooter += '<th>Items</th>';
+            tfooter += '<th></th>';
+            tfooter += '<th>Total Amount</th>';
+            tfooter += '<th>₱ ' + Number(totalamount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</th>';
+            tfooter += "</tr>";
+            tfooter += "</tfoot>";
+    
+            console.log(theader+tbody+tfooter);
+            document.getElementById("cart").innerHTML='<table>'+ theader + tbody + tfooter+ '</table>';
+        }
+    
+        // Global variable
+        var cart = []; 
+    </script>    
+</body>
+</html>

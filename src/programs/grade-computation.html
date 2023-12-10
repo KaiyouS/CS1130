@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Grade Computation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/src/styles/shared.css">
+    <link rel="icon" href="/src/images/logo/favicon.ico">
+	<!---------- IMPORT HEADER ----------><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script>$(function(){$("#header").load("/header.html");});</script> 
+</head>
+<body>
+	<!-- <div id="header"></div> -->
+	<!---------- HEADER ----------><header><div class="header-content"><h1><a href="index.html" class="logo-container"><img src="/src/images/logo/site-logo.png" alt="Site Logo" id="site-logo"><p id="logo-text">K A I Y O U</p></a></h1><nav><ul><li><a href="/index.html">Home</a></li><li class="dropdown"><a href="#">Assignments</a><div class="dropdown-content"><a href="/conversion.html">Assignment #1: Conversion</a><a href="/income-tax.html">Assignment #2: Income Tax</a><a href="/loops.html">Assignment #3: Loops</a><a href="/simple-payroll.html">Assignment #4: Simple Payroll</a></div></li><li class="dropdown"><a href="#">Other Programs</a><div class="dropdown-content"><a href="/src/programs/grade-computation.html">Compute Grade</a><a href="/src/programs/add-number.html">Add Two Numbers</a><a href="/src/programs/shopping-cart.html">Shopping Cart</a><a href="/src/programs/stars.html">All The Stars</a></div></li><li><a href="/about.html">About</a></li></ul></nav></div></header>
+	<div class="main-container">
+		<div class="page-description">
+			<h1>Compute Grade</h1>
+			<br>
+			<p class="medium">
+				This program computes the grade of a student based on the score, number of items, and base grade. The program also displays the corresponding letter grade and a comment based on the computed grade.
+				<br><br>
+				To use the program, simply enter the score, number of items, and base grade in the input boxes below. The program will then compute the grade and display the result in the "Grade" box.
+			</p>
+			<br><br><br>
+			<a href="../../index.html" id="home">Back to Home Page</a>
+			<hr><br>
+		</div>
+		<div class="content-wrapper">
+			<div class="container-left ratio-fifty">
+				<div class="content-left">
+					<label for="score">Score:</label>
+					<input id="score" type="number" placeholder="Enter Score">
+					<br>
+					<label for="items">Items:</label>
+					<input id="items" type="number" placeholder="Enter Number of Items">
+					<br>
+					<label for="base">Base Grade:</label>
+					<input id="base" type="number" placeholder="Enter Base Grade">
+					<button onclick="computeGrade()">Compute Grade</button>
+					<br><br>
+				</div>
+			</div>
+			<div class="container-right ratio-fifty">
+				<div class="content-right">
+					<label for="grade:">Grade:</label>
+					<input id="grade" type="number" placeholder="Final Grade" readonly>
+					<br>
+					<label for="letterGrade">Letter Grade:</label>
+					<input id="letterGrade" type="text" placeholder="Letter Grade Equivalent" readonly>
+					<br><br>
+					<h1 id="result-feedback"></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function computeGrade() {
+			var score, items, base, g, lg, cm, cp;
+
+			score = document.getElementById("score").value * 1;
+			items = document.getElementById("items").value * 1;
+			base = document.getElementById("base").value * 1;
+
+			g = (score / items) * (100 - base) + base;
+
+			if (g >= 92 && g <= 100) {
+				lg = 'A';
+			} else if (g >= 88 && g <= 91) {
+				lg = 'B+';
+			} else if (g >= 82 && g <= 87) {
+				lg = 'B';
+			} else if (g >= 78 && g <= 81) {
+				lg = 'C+';
+			} else if (g >= 72 && g <= 77) {
+				lg = 'C';
+			} else if (g >= 68 && g <= 71) {
+				lg = 'D';
+			} else if (g < 68) {
+				lg = 'F';
+			} else {
+				lg = 'Invalid';
+			}
+
+			switch(lg) {
+				case 'A':
+					cm = 'Excellent';
+					cp = 'an';
+					break;
+				case 'B+':
+					cm = 'Very Good';
+					cp = 'a';
+					break;
+				case 'B':
+					cm = 'Good';
+					cp = 'a';
+					break;
+				case 'C+':
+				case 'C':
+					cm = 'Average';
+					cp = 'an'
+					break;
+				case 'D':
+					cm = 'Passing';
+					cp = 'a';
+					break;
+				case 'F':
+					cm = 'Failing';
+					cp='a'
+					break;
+				default:
+					cm = 'Invalid';
+					cp = 'an';
+			}
+
+			document.getElementById("grade").value = g;
+			document.getElementById("letterGrade").value = lg;
+			document.getElementById("result-feedback").innerHTML = 'This is ' + cp + ' ' + cm + ' grade.';
+		}
+	</script>
+</body>
+</html>

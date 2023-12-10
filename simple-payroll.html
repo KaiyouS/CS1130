@@ -1,92 +1,210 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>海容 | Simple Payroll</title>
     <meta charset="UTF-8">
-    <title>Simple Payroll</title>
-    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="src/styles/shared.css">
+    <link rel="icon" href="/src/images/logo/favicon.ico">
+	<!---------- IMPORT HEADER ----------><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script>$(function(){$("#header").load("/header.html");});</script> 
 </head>
 <body>
-    <div id="app" class="container3">
-        <h1>Simple Payroll</h1>
-        <br>
-        <h2>Add Employee</h2>
-        <form id="employeeForm">
-          <input type="text" id="name" placeholder="Employee Name" required>
-          <input type="number" id="daysWorked" placeholder="Days Worked" required>
-          <input type="number" id="dailyRate" placeholder="Daily Rate" required>
-          <input type="number" id="deduction" placeholder="Deduction Amount" required>
-          <button type="submit">Add Employee</button>
-        </form>
-        <br><br>
-        <h2>Payroll List</h2>
-        <table id="employeeTable">
-          <tr>
-            <th>No.</th>
-            <th>Employee Name</th>
-            <th>Days Worked</th>
-            <th>Daily Rate</th>
-            <th>Gross Pay</th>
-            <th>Deduction Amount</th>
-            <th>Net Pay</th>
-            <th>Action</th>
-          </tr>
-        </table>
-        <br><br>
-        <h2>Delete Employee</h2>
-        <form id="deleteForm">
-          <input type="number" id="lineNumber" placeholder="Line Number" required>
-          <button type="submit">Delete Employee</button>
-        </form>
-        <br><br>
-        <a href="index.html">Back to Home Page</a>
-        <br>
+	<!-- <div id="header"></div> -->
+    <!---------- HEADER ----------><header><div class="header-content"><h1><a href="index.html" class="logo-container"><img src="/src/images/logo/site-logo.png" alt="Site Logo" id="site-logo"><p id="logo-text">K A I Y O U</p></a></h1><nav><ul><li><a href="/index.html">Home</a></li><li class="dropdown"><a href="#">Assignments</a><div class="dropdown-content"><a href="/conversion.html">Assignment #1: Conversion</a><a href="/income-tax.html">Assignment #2: Income Tax</a><a href="/loops.html">Assignment #3: Loops</a><a href="/simple-payroll.html">Assignment #4: Simple Payroll</a></div></li><li class="dropdown"><a href="#">Other Programs</a><div class="dropdown-content"><a href="/src/programs/grade-computation.html">Compute Grade</a><a href="/src/programs/add-number.html">Add Two Numbers</a><a href="/src/programs/shopping-cart.html">Shopping Cart</a><a href="/src/programs/stars.html">All The Stars</a></div></li><li><a href="/about.html">About</a></li></ul></nav></div></header>
+    <div class="main-container">
+        <div class="page-description">
+            <h1>Simple Payroll</h1>
+            <br>
+            <p class="medium">
+                This program serves as a simple payroll system that allows users to add and delete employees from a payroll list. The user can input the employee's name, number of days worked, daily rate, and deduction amount. The program will then compute the gross pay and net pay of the employee.
+                <br><br>
+                To use the program, simply fill out the form on the left side of the page. The program will then add the employee to the payroll list on the right side of the page. To delete an employee, enter the line number of the employee in the form. The program will then delete the employee from the payroll list.
+            </p>
+            <br><br><br>
+			<a href="index.html" id="home">Back to Home Page</a>
+			<hr><br>
+        </div>
+        <div class="content-wrapper">
+            <div class="container-left ratio-thirty">
+                <div class="content-left">
+                    <h2>Add Employee</h2>
+                    <br>
+                    <form id="employeeForm">
+                        <label for="name">Employee Name</label>
+                        <input type="text" id="name" placeholder="Enter Full Name" required>
+                        <br>
+                        <label for="daysWorked">Days Worked</label>
+                        <input type="number" id="daysWorked" placeholder="Enter Number of Days" required>
+                        <br>
+                        <label for="dailyRate">Daily Rate</label>
+                        <input type="number" id="dailyRate" placeholder="Enter Daily Rate in PHP" required>
+                        <br>
+                        <label for="deduction">Deduction Amount</label>
+                        <input type="number" id="deduction" placeholder="Enter Deduction Amount in PHP" required>
+                        <button type="submit">Add Employee</button>
+                    </form>
+                    <br><hr class="lighter-color"><br>
+                    <h2>Delete Employee</h2>
+                    <form id="deleteForm">
+                        <input type="number" id="lineNumber" placeholder="Line Number" required>
+                        <button class="caution-color" type="submit">Delete Employee</button>
+                    </form>
+                    <br><br>
+                    <h2>Clear Payroll</h2>
+                    <button class="caution-color" id="clearPayroll">Clear Payroll List</button>
+                </div>
+            </div>
+            <div class="container-right ratio-seventy">
+                <div class="content-right">
+                    <h2>Payroll List</h2>
+                    <br>
+                    <table id="employeeTable">
+                        <tr>
+                            <th>No.</th>
+                            <th>Employee Name</th>
+                            <th>Days Worked</th>
+                            <th>Daily Rate</th>
+                            <th>Gross Pay</th>
+                            <th>Deduction Amount</th>
+                            <th>Net Pay</th>
+                        </tr>
+                    </table>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close block right">&times;</span>
+            <br><br>
+            <p id="modal-warning"></p>
+            <br><br>
+            <button id="confirmModal">YES</button>
+            <button id="cancelModal">NO</button>
+        </div>
     </div>
 
     <script>
-        document.getElementById('employeeForm').addEventListener('submit', function(event) {
+        var table = document.getElementById('employeeTable');
+
+        document.getElementById('employeeForm').addEventListener('submit', function (event) {
             event.preventDefault();
-          
+
             var name = document.getElementById('name').value;
             var daysWorked = document.getElementById('daysWorked').value;
-            var dailyRate = document.getElementById('dailyRate').value;
-            var deduction = document.getElementById('deduction').value;
-          
+            var dailyRate = Number(document.getElementById('dailyRate').value);
+            var deduction = Number(document.getElementById('deduction').value);
+
             var grossPay = daysWorked * dailyRate;
             var netPay = grossPay - deduction;
-          
-            var table = document.getElementById('employeeTable');
+
             var row = table.insertRow(-1);
-          
+
             row.insertCell(0).innerText = table.rows.length - 1;
-            row.insertCell(1).innerText = name;
+            row.insertCell(1).innerText = name.toUpperCase();
             row.insertCell(2).innerText = daysWorked;
-            row.insertCell(3).innerText = dailyRate;
-            row.insertCell(4).innerText = grossPay;
-            row.insertCell(5).innerText = deduction;
-            row.insertCell(6).innerText = netPay;
-            row.insertCell(7).innerText = 'Delete';
-            row.cells[7].addEventListener('click', function() {
-                table.deleteRow(row.rowIndex);
-                updateLineNumbers();
-            });
-          
-            function updateLineNumbers() {
-              for (var i = 1; i < table.rows.length; i++) {
-                table.rows[i].cells[0].innerText = i;
-              }
-            }
-          });
-          
-          document.getElementById('deleteForm').addEventListener('submit', function(event) {
+            row.insertCell(3).innerText = '₱ ' + dailyRate.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            row.insertCell(4).innerText = '₱ ' + grossPay.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            row.insertCell(5).innerText = '₱ ' + deduction.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            row.insertCell(6).innerText = '₱ ' + netPay.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            
+            updateLineNumbers(table)
+            document.getElementById('name').value = '';
+            document.getElementById('daysWorked').value = '';
+            document.getElementById('dailyRate').value = '';
+            document.getElementById('deduction').value = '';
+        });
+
+        document.getElementById('lineNumber').addEventListener('input', function () {
+            this.setCustomValidity('');
+        });
+
+        document.getElementById('deleteForm').addEventListener('submit', function (event) {
             event.preventDefault();
-          
+
+            var lineNumberInput = document.getElementById('lineNumber');
             var lineNumber = document.getElementById('lineNumber').value;
-          
-            var table = document.getElementById('employeeTable');
-            if (lineNumber > 0 && lineNumber < table.rows.length) {
-              table.deleteRow(lineNumber);
+
+            if (lineNumber < 1 || lineNumber > table.rows.length - 1) {
+                lineNumberInput.setCustomValidity('Line number does not exist.');
+                lineNumberInput.reportValidity();
+                return;
             }
-          });
+
+            modalOperation = 'deleteEmployee';
+            var tableHeaderHTML = document.querySelector('#employeeTable tr:first-child').outerHTML;
+            var selectedRow = document.querySelector('#employeeTable tr:nth-child(' + (parseInt(lineNumber) + 1) + ')');
+            var selectedRowHTML = selectedRow.outerHTML;
+            document.getElementById('modal-warning').innerHTML = 'Are you sure you want to delete employee at line number ' + lineNumber + '?<br><br><table>' + tableHeaderHTML + selectedRowHTML + '</table>';
+
+            modal.style.display = "block";
+        });
+
+        document.getElementById('clearPayroll').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            modalOperation = 'clearPayroll';
+            document.getElementById('modal-warning').innerHTML = 'Are you sure you want to clear the payroll list?<br><br>Payroll List contains ' + (table.rows.length - 1) + ' employee(s).';
+            modal.style.display = "block";
+        });
+
+        function deleteEmployee() {
+            var lineNumber = document.getElementById('lineNumber').value;
+
+            if (lineNumber > 0 && lineNumber < table.rows.length) {
+                table.deleteRow(lineNumber);
+            }
+
+            document.getElementById('lineNumber').value = '';
+            updateLineNumbers(table);
+        }
+
+        function clearPayroll() {
+            var table = document.getElementById('employeeTable');
+            for (var i = table.rows.length - 1; i > 0; i--) {
+                table.deleteRow(i);
+            }
+        }
+
+        function updateLineNumbers(table) {
+            for (var i = 1; i < table.rows.length; i++) {
+                table.rows[i].cells[0].innerText = i;
+            }
+        }
+
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        var confirmBtn = document.getElementById("confirmModal");
+        var cancelBtn = document.getElementById("cancelModal");
+        var modalOperation = '';
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        confirmBtn.onclick = function() {
+            switch (modalOperation) {
+                case 'deleteEmployee':
+                    deleteEmployee();
+                    break;
+                case 'clearPayroll':
+                    clearPayroll();
+                    break;
+            }
+
+            modal.style.display = "none";
+        }
+
+        cancelBtn.onclick = function() {
+            modal.style.display = "none";
+        }
     </script>
 </body>
+
 </html>

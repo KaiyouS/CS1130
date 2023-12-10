@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>海容 | Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+	<link rel="icon" href="site-logo.ico">
+    <!---------- IMPORT HEADER ----------><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script>$(function(){$("#header").load("header.html");});</script>
+</head>
+<body>
+    <div class="content">
+        <div id="header"></div>
+        <div id="hamburger-container" class="hamburger-container">
+            <span class="hamburger-icon">&#9776;</span>
+        </div>
+        <h1 id="text-title">HELLO</h1>
+        <div class="container">
+            <div class="div1">
+                <div class="text-content">
+                    <br>
+                    <h1>Assignments:  (NOT DONE YET as of 12/07/2023)</h1>
+                    <hr>
+                    <p>
+                        <b>Assignment #1:</b> Conversion (Temperature and Length)<br>
+                        <b>Assignment #2:</b> Income Tax Calculator<br>
+                        <b>Assignment #3:</b> Operations - Factorial, Sum, and Average<br>
+                        <b>Assignment #4:</b> Simple Payroll<br>
+                        <hr>
+                    </p>
+                    <h1>Other:</h1>
+                    <hr>
+                    <p>
+                        <b>Grade Computation:</b> Compute Grade<br>
+                        <b>Add Two Numbers:</b> Add Two Numbers<br>
+                        <b>Shopping Cart:</b> Shopping Cart<br>
+                        <b>All The Stars:</b> ???<br>
+                        <b>Click:</b> 海容<br>
+                        <br>
+                    </p>
+                </div>
+            </div>
+            <div class="div2">
+                <br>
+                <div class="grid-container">
+                    <div class="grid-title">Programs</div>
+                    <div class="main-grid">
+                        <a href="conversion.html" id="conv">Conversion</a>
+                        <a href="income-tax.html" id="inco">Income Tax</a>
+                        <a href="operations.html" id="oper">Operations</a>
+                        <a href="simple-payroll.html" id="payr">Simple Payroll</a>
+                        <a href="grade-computation.html" id="grad">Compute Grade</a>
+                        <a href="add-number.html" id="add">Add Two Numbers</a>
+                        <a href="shopping-cart.html" id="cart">Shopping Cart</a>
+                        <a href="stars.html" id="star">???</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <h2>ITC: Assignments</h2>
+        <a href="conversion.html">Conversion</a>
+        <a href="income-tax.html">Income Tax</a>
+        <a href="operations.html">Operations</a>
+        <a href="simple-payroll.html">Simple Payroll</a>
+        <a href="grade-computation.html">Compute Grade</a>
+        <a href="add-number.html">Add Two Numbers</a>
+        <a href="shopping-cart.html">Shopping Cart</a>
+    </div>
+
+    <script>
+        document.getElementById("hamburger-container").addEventListener("click", openNav);
+        document.querySelector(".closebtn").addEventListener("click", closeNav);
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "23%";
+            document.getElementById("hamburger-container").classList.add("hide");
+            document.querySelector(".content").classList.add("move");
+        }
+          
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("hamburger-container").classList.remove("hide");
+            document.querySelector(".content").classList.remove("move");
+        }
+    </script>
+</body>
+</html>

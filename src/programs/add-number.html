@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>海容 | Add Two Numbers</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/src/styles/shared.css">
+    <link rel="icon" href="/src/images/logo/favicon.ico">
+	<!---------- IMPORT HEADER ----------><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script>$(function(){$("#header").load("/header.html");});</script> 
+</head>
+<body>
+	<!-- <div id="header"></div> -->
+    <!---------- HEADER ----------><header><div class="header-content"><h1><a href="index.html" class="logo-container"><img src="/src/images/logo/site-logo.png" alt="Site Logo" id="site-logo"><p id="logo-text">K A I Y O U</p></a></h1><nav><ul><li><a href="/index.html">Home</a></li><li class="dropdown"><a href="#">Assignments</a><div class="dropdown-content"><a href="/conversion.html">Assignment #1: Conversion</a><a href="/income-tax.html">Assignment #2: Income Tax</a><a href="/loops.html">Assignment #3: Loops</a><a href="/simple-payroll.html">Assignment #4: Simple Payroll</a></div></li><li class="dropdown"><a href="#">Other Programs</a><div class="dropdown-content"><a href="/src/programs/grade-computation.html">Compute Grade</a><a href="/src/programs/add-number.html">Add Two Numbers</a><a href="/src/programs/shopping-cart.html">Shopping Cart</a><a href="/src/programs/stars.html">All The Stars</a></div></li><li><a href="/about.html">About</a></li></ul></nav></div></header>
+    <div class="main-container">
+        <div class="page-description">
+            <h1>Add Two Numbers</h1>
+            <br>
+            <p class="medium">
+                This program adds two numbers and displays the result. 
+                <br><br>
+                To use the program, simply enter the first number and second number in the input boxes below. The program will then add the two numbers and display the result in the "Result" box.
+            </p>
+            <br><br><br>
+            <a href="../../index.html" id="home">Back to Home Page</a>
+            <hr><br>
+        </div>
+        <div class="single-container">
+            <div class="single-content small-content">
+                <label>Enter first number: </label>
+                <input type="number" id="firstNumber" onkeyup="add()" placeholder="A">
+                <br>
+                <label>Enter second number: </label>
+                <input type="number" id="secondNumber" onkeyup="add()" placeholder="B">
+                <br>
+                <label for="result">Result: </label>
+                <input type="text" id="result" placeholder="C" readonly>
+                <br><br>
+                <p><b>Formula:</b> A + B = C</p>
+            </div>
+        </div>
+    <script>
+        function add() {
+            var firstNumber = document.getElementById('firstNumber').value * 1;
+            var secondNumber = document.getElementById('secondNumber').value * 1;
+            var result = firstNumber + secondNumber;
+            document.getElementById('result').value = result;
+        }
+    </script>
+</html>

@@ -104,7 +104,7 @@
                 return;
             }
 
-            document.getElementById('result').value = Number(result).toLocaleString() + message;
+            document.getElementById('result').value = Number(result).toLocaleString('en-US', {maximumFractionDigits: 2 }) + message;
         }
 
         function clearValues () {

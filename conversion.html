@@ -62,6 +62,7 @@
                 <br>
                 <label for="result">Result: </label>
                 <input type="text" id="result" readonly>
+                <button id="clear-button" >Clear Values</button>
             </div>
         </div>
     </div>
@@ -69,6 +70,7 @@
     <script>
         document.getElementById('conversion').addEventListener('change', convert);
         document.getElementById('number').addEventListener('input', convert);
+        document.getElementById('clear-button').addEventListener('click', clearValues);
 
         function convert() {
             var conversionType = document.getElementById('conversion').value;
@@ -105,9 +107,10 @@
             document.getElementById('result').value = Number(result).toLocaleString() + message;
         }
 
-        function clearResult() {
+        function clearValues () {
+			document.getElementById('number').value = '';
             document.getElementById('result').value = '';
-        }
+		}
     </script>
 </body>
 </html>

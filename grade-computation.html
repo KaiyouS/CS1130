@@ -38,6 +38,7 @@
 					<label for="base">Base Grade:</label>
 					<input id="base" type="number" placeholder="Enter Base Grade">
 					<button onclick="computeGrade()">Compute Grade</button>
+					<button class="caution-color" id="clear-button" >Clear Values</button>
 					<br><br>
 				</div>
 			</div>
@@ -56,6 +57,8 @@
 	</div>
 
 	<script>
+		document.getElementById('clear-button').addEventListener('click', clearValues);
+
 		function computeGrade() {
 			var score, items, base, g, lg, cm, cp;
 
@@ -117,6 +120,15 @@
 			document.getElementById("grade").value = g;
 			document.getElementById("letterGrade").value = lg;
 			document.getElementById("result-feedback").innerHTML = 'This is ' + cp + ' ' + cm + ' grade.';
+		}
+
+		function clearValues () {
+			document.getElementById('score').value = '';
+			document.getElementById('items').value = '';
+			document.getElementById('base').value = '';
+			document.getElementById('grade').value = '';
+			document.getElementById('letterGrade').value = '';
+			document.getElementById('result-feedback').innerHTML = '';
 		}
 	</script>
 </body>

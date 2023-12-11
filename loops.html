@@ -18,10 +18,9 @@
             <h1>Loops</h1>
             <br>
             <p>
-                This program performs different operations depending on the selected operation type. Each operation uses different types loops to get the appropriate result. Factorial uses a while loop. Sum uses a do-while loop. Average uses a for loop.
+                Calculate for the Nth <b>factorial</b>, <b>sum</b> of numbers from 1 to N, and <b>average</b> of numbers from 1 to N. This program performs different operations depending on the selected operation type. Each operation uses different types loops to get the appropriate result. Factorial uses a while loop. Sum uses a do-while loop. Average uses a for loop.
                 <br><br>
                 To use the program, select the operation type and enter a number. The program will then compute the result and display it in the result field.
-
             </p>
             
             <br><br><br>
@@ -38,11 +37,15 @@
                 </select>
                 <br><br>
                 <label>Enter a number: </label>
-                <input type="text" id="number" placeholder="0">
+                <input type="text" id="number" placeholder="N">
                 <br><br>
                 <label for="result">Result: </label>
                 <input type="text" id="result" readonly>
                 <button id="clear-button" >Clear Values</button>
+                <p class="lighter-color">
+                    <br>
+                    <b>NOTE:</b> This program only takes positive numbers.
+                </p>
             </div>
         </div>
     </div>
@@ -77,16 +80,28 @@
             var number = document.getElementById('number').value * 1;
             var result = 1;
             var i = 1;
+
+            if (number < 0) {
+                document.getElementById('result').value = 'ERROR! Please enter a positive number.';
+                return;
+            }
+
             while (i <= number) {
                 result *= i;
                 i++;
             }
             document.getElementById('result').value = Number(result).toLocaleString();
         }
+
         function sum() {
             var number = document.getElementById('number').value * 1;
             var result = 0;
             var i = 1;
+
+            if (number < 0) {
+                document.getElementById('result').value = 'ERROR! Please enter a positive number.';
+                return;
+            }
 
             if (number == 0) {
                 document.getElementById('result').value = 0;
@@ -99,9 +114,15 @@
             } while (i <= number);
             document.getElementById('result').value = Number(result).toLocaleString();
         }
+
         function average() {
             var number = document.getElementById('number').value * 1;
             var result = 0;
+
+            if (number < 0) {
+                document.getElementById('result').value = 'ERROR! Please enter a positive number.';
+                return;
+            }
 
             if (number == 0) {
                 document.getElementById('result').value = 0;

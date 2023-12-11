@@ -42,12 +42,14 @@
                 <br><br>
                 <label for="result">Result: </label>
                 <input type="text" id="result" readonly>
+                <button id="clear-button" >Clear Values</button>
             </div>
         </div>
     </div>
     <script>
         document.getElementById('operationType').addEventListener('change', compute);
         document.getElementById('number').addEventListener('input', compute);
+        document.getElementById('clear-button').addEventListener('click', clearValues);
 
         function compute() {
             var number = Number(document.getElementById('number').value);
@@ -111,6 +113,11 @@
             }
             result /= number;
             document.getElementById('result').value = Number(result).toLocaleString();
+        }
+
+        function clearValues () {
+            document.getElementById('number').value = '';
+            document.getElementById('result').value = '';
         }
     </script>
 </body>

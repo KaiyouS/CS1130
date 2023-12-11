@@ -1,4 +1,4 @@
-<!-- CODE BY: SIR JRGERALDE -->
+<!-- ORIGINAL SHOOPING CART CODE BY: SIR JRGERALDE -->
 
 <!DOCTYPE html>
 <html>
@@ -64,11 +64,11 @@
                     <hr>
                     <label for="items">Cart Items:</label>
                     <input id="items" name="items" type="number" readonly></input>
-                    <button class="caution-color" onclick="clearCart()">Clear Cart</button>
+                    <button class="caution-color" id="clearButton">Clear Cart</button>
                     <br>
                     <label for="deleteItem">Delete Item:</label>
                     <input id="deleteItem" name="deleteItem" type="number" ></input>
-                    <button class="caution-color" onclick="deleteitem()" >Delete</button>  
+                    <button class="caution-color" id="deleteButton">Delete</button>  
                     <br>
                 </div>
             </div>
@@ -80,7 +80,68 @@
         </div>
     </div>
 
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close block right">&times;</span>
+            <br><br>
+            <p id="modal-text"></p>
+            <br><br>
+            <button id="confirmModal">YES</button>
+            <button id="cancelModal">NO</button>
+        </div>
+    </div>
+
     <script>
+        // Get the modal and the buttons
+        var isDelete = false;
+        var isClear = false;
+        var modal = document.getElementById("myModal");
+        var confirmModal = document.getElementById("confirmModal");
+        var cancelModal = document.getElementById("cancelModal");
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the clear button, show the modal
+        document.getElementById("clearButton").onclick = function() {
+            document.getElementById("modal-text").textContent = "Delete all item(s) from cart ?";
+            isClear = true;
+            isDelete = false;
+            modal.style.display = "block";
+        }
+
+        // When the user clicks the delete button, show the modal
+        document.getElementById("deleteButton").onclick = function() {
+            var itemNumber = document.getElementById("deleteItem").value;
+            document.getElementById("modal-text").textContent = "Delete item no. " + itemNumber + "?";
+            isDelete = true;
+            isClear = false;
+            modal.style.display = "block";
+        }
+
+        // When the user clicks OK, do the action and close the modal
+        confirmModal.onclick = function() {
+            if (isClear) {
+                initializeCart();
+            } else if (isDelete) {
+                deleteitem();
+            }
+            
+            isClear = false;
+            isDelete = false;
+
+            modal.style.display = "none";
+        }
+
+        // When the user clicks Cancel, close the modal
+        cancelModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+
+
         // Initialize cart      
         function initializeCart(){
             cart = [];

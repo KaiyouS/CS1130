@@ -36,16 +36,25 @@
                 <br>
                 <label for="result">Result: </label>
                 <input type="text" id="result" placeholder="C" readonly>
+                <button id="clear-button" onclick="clearValues()">Clear Values</button>
                 <br><br>
                 <p><b>Formula:</b> A + B = C</p>
             </div>
         </div>
     <script>
+        document.getElementById('clear-button').addEventListener('click', clearValues);
+
         function add() {
             var firstNumber = document.getElementById('firstNumber').value * 1;
             var secondNumber = document.getElementById('secondNumber').value * 1;
             var result = firstNumber + secondNumber;
             document.getElementById('result').value = result;
+        }
+
+        function clearValues() {
+            document.getElementById('firstNumber').value = '';
+            document.getElementById('secondNumber').value = '';
+            document.getElementById('result').value = '';
         }
     </script>
 </html>
